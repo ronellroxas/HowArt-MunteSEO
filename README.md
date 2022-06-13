@@ -2,7 +2,7 @@
 
 ## Get Started
 
-**Run both backend and frontend:** run `npm run dev-all`
+**Run both backend and frontend:** at root folder run `npm run dev-all`
 
 **Run frontend only:**
 1. go to root folder (*howard-munteseo*)
