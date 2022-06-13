@@ -1,20 +1,22 @@
 {
-  "name": "howart-munteseo",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0"
-  },
-  "devDependencies": {
-    "eslint": "8.17.0",
-    "eslint-config-next": "12.1.6"
-  }
+    "name": "howart-munteseo",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "dev-all": "concurrently \"npm run dev\" \"cd backend && npm run dev\"",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "next": "12.1.6",
+        "react": "18.1.0",
+        "react-dom": "18.1.0"
+    },
+    "devDependencies": {
+        "concurrently": "^7.2.1",
+        "eslint": "8.17.0",
+        "eslint-config-next": "12.1.6"
+    }
 }
