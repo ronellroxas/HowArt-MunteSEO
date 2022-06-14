@@ -107,7 +107,7 @@ export default function signup() {
                                     Sign up
                                 </Button>
                             </Center>
-                            <Text paddingTop="15px" fontSize="14px" color="#696F79" align="center">Dont have an account yet? <Link fontSize="14px" className="loginUnderline" color="#BC8B6F" href='signup'>Sign up</Link></Text>
+                            <Text paddingTop="15px" fontSize="14px" color="#696F79" align="center">Already have an account? <Link fontSize="14px" className="loginUnderline" color="#BC8B6F" href='login'>Log in</Link></Text>
                         </GridItem> 
                     </Grid>
                 </Form>
