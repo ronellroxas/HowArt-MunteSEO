@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-
-const NAME_MAX_CHAR = 50;
-const MODEL_NAME = "User";
+const bcrypt = require("bcrypt")
 
 const userSchema = new mongoose.Schema({
     username:{
@@ -13,14 +11,12 @@ const userSchema = new mongoose.Schema({
 
     firstName:{
         type: String,
-        required: true,
-        maxlength: [NAME_MAX_CHAR, `First name cannot exceed ${NAME_MAX_CHAR} characters`]
+        required: true
     },
 
     lastName:{
         type: String,
-        required: true,
-        maxlength: [NAME_MAX_CHAR, `First name cannot exceed ${NAME_MAX_CHAR} characters`]
+        required: true
     },
 
     password:{
@@ -42,5 +38,5 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-const User = mongoose.model(MODEL_NAME, userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;
