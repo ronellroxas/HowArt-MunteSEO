@@ -14,3 +14,60 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.loginPadding {
+  padding-top: 130px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.loginMargin {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  width: 70%;
+}
+
+.loginSpacing {
+  padding-bottom: 8px;
+}
+
+.smallText {
+  font-size: 14px !important;
+}
+
+.fontStylePoppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.loginDivider {
+  color: #BABABA;
+  font-size: 12px !important;
+}
+
+.loginFontColor {
+  font-family: 'Poppins', sans-serif;
+  color: #696F79;
+}
+
+.loginText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+.loginIconButton {
+  background-color: white !important;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.loginUnderline {
+  text-decoration: underline !important;
+}
+
+.loginOverflow {
+  overflow: hidden;
+}
