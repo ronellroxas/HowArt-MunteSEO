@@ -11,7 +11,8 @@
 **Run backend only:**
 1. go to root folder 
 2. `cd backend`
-3. run `npm run dev`
+3. install dependencies: `npm install`
+4. run `npm run dev`
 
 ## File systems
 ### Frontend 
