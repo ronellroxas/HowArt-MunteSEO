@@ -40,7 +40,7 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Decimal128
     },
 
-    imageUrl: {
+    image: {
         type: String,
         required: [ true, "Please provide an image file" ]
     },
@@ -64,7 +64,7 @@ postSchema.methods.toPlainObjectWithUser = function(){
         width: this.width,
         heigth: this.height,
         price: this.price.toString(),
-        imageUrl: this.imageUrl,
+        imageUrl: `/uploads/${this.image}`,
         tags: this.tags,
         user: this.user.toPlainObject()
     }

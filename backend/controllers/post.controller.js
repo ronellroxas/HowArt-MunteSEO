@@ -14,7 +14,7 @@ module.exports.createPost = async (req, res, next) => {
             width: req.body.width,
             height: req.body.height,
             price: req.body.price,
-            imageUrl: req.file ? `/uploads/${req.file.filename}`: undefined,
+            image: req.file != undefined ? req.file.filename : undefined,
             tags: typeof req.body.tags === "string" ? JSON.parse(req.body.tags): undefined
         });
 
