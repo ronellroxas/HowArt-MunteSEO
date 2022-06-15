@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 const postSchema = new mongoose.Schema({
-    userId: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
@@ -10,37 +10,65 @@ const postSchema = new mongoose.Schema({
 
     title: {
         type: String,
-        required: true
+        required: [ true, "Please provide a title" ],
+        trim: true
     },
 
     medium:{
         type: String,
-        required: true
+        required: [ true, "Please provide a medium" ],
+        trim: true
     },
 
     subject: {
         type: String,
-        required: true
+        required: [ true, "Please provide a subject" ],
+        trim: true
     },
 
     width: {
-        type: Double,
-        required: true
+        type: Number,
+        required: [ true, "Please specify the width" ]
+    },
+
+    height: {
+        type: Number,
+        required: [ true, "Please specify the height" ]
     },
 
     price: {
-        type: Double
+        type: mongoose.Decimal128
     },
 
     imageUrl: {
         type: String,
-        required: true
+        required: [ true, "Please provide an image file" ]
     },
 
     tags: [{
         type: String,
+        trim: true
     }]
 });
+
+postSchema.methods.toPlainObjectWithUser = function(){
+    if(!this.populated("user")){
+        throw new Error("User field must be populated");
+    }
+
+    return {
+        id: this._id,
+        title: this.title,
+        medium: this.medium,
+        subject: this.subject,
+        width: this.width,
+        heigth: this.height,
+        price: this.price.toString(),
+        imageUrl: this.imageUrl,
+        tags: this.tags,
+        user: this.user.toPlainObject()
+    }
+}
 
 const Post = mongoose.model("Post", postSchema);
 module.exports = Post;
