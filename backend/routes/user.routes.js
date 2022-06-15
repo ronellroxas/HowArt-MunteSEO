@@ -19,6 +19,7 @@ const upload = multer({
 
 router.post("/login", userController.login);
 router.get("/me", authMiddlewares.checkAuth, userController.getLoggedInUser);
+router.get("/:userId/statistics", authMiddlewares.checkAuth, userController.getUserStatistics);
 router.get("/:userId", authMiddlewares.checkAuth, userController.getUser);
 router.patch("/profile-picture", authMiddlewares.checkAuth, upload.single("profilePicture"), userController.updateProfilePicture);
 router.post("/follow", authMiddlewares.checkAuth, userController.followUser);

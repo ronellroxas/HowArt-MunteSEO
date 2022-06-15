@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const fileHelper = require("../helpers/file-helper");
 const mongoose = require("mongoose");
 const Following = require("../models/following.model");
+const Post = require("../models/post.model");
 
 module.exports.login = async (req, res, next) => {
     try{
@@ -170,3 +171,21 @@ module.exports.getUser = async (req, res, next) => {
     }
 }
 
+module.exports.getUserStatistics = async (req, res, next) => {
+    try{
+        let userId = req.params.userId;
+        let [ followersCount, followingCount, postCount ] = await Promise.all([
+            Following.count({ followed: userId }),
+            Following.count({ follower: userId }),
+            Post.count({ user: userId })
+        ]);
+
+        res.status(200).json({
+            followersCount,
+            followingCount,
+            postCount
+        });
+    }catch(e){
+        next(e);
+    }
+}
