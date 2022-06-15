@@ -20,5 +20,6 @@ const upload = multer({
 router.post("/login", userController.login);
 router.get("/me", authMiddlewares.checkAuth, userController.getLoggedInUser);
 router.patch("/profile-picture", authMiddlewares.checkAuth, upload.single("profilePicture"), userController.updateProfilePicture);
+router.post("/", userController.createUser);
 
 module.exports = router;

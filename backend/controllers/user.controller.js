@@ -5,6 +5,7 @@ const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fileHelper = require("../helpers/file-helper");
+const mongoose = require("mongoose");
 
 module.exports.login = async (req, res, next) => {
     try{
@@ -69,6 +70,43 @@ module.exports.updateProfilePicture = async (req, res, next) => {
     }catch(e){
         if(req.file != undefined){
             fileHelper.deleteIfExists(path.join(constants.UPLOADS_DIRECTORY, req.file.filename));
+        }
+        next(e);
+    }
+}
+
+module.exports.createUser = async (req, res, next) => {
+    try{
+        let password = req.body.password;
+        let hashedPassword = typeof password === "string" && password.length > 0 ? bcrypt.hashSync(password, 10): undefined;
+        if(hashedPassword == undefined){
+            return res.status(400).json({
+                errors: {
+                    password: "Password must be provided"
+                }
+            });
+        }
+
+        let user = new User({
+            username: req.body.username,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            password: hashedPassword,
+            bio: req.body.bio,
+            email: req.body.email
+        });
+
+        await user.save();
+
+        res.status(201).json(user.toPlainObject());
+    }catch(e){
+        if(e.name === "MongoServerError" && e.code === 11000){
+            let key = e.keyPattern.username === 1 ? "username" : "email";
+            return res.status(400).json({
+                errors: {
+                    [key]: `${key} already exists`
+                }
+            })
         }
         next(e);
     }
