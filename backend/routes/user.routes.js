@@ -18,6 +18,7 @@ const upload = multer({
 });
 
 router.post("/login", userController.login);
+router.post("/logout", userController.logout);
 router.get("/me", authMiddlewares.checkAuth, userController.getLoggedInUser);
 router.get("/:userId/statistics", authMiddlewares.checkAuth, userController.getUserStatistics);
 router.get("/:userId", authMiddlewares.checkAuth, userController.getUser);

@@ -189,3 +189,7 @@ module.exports.getUserStatistics = async (req, res, next) => {
         next(e);
     }
 }
+
+module.exports.logout = (req, res, next) => {
+    res.clearCookie("token").status(204).end();
+}
