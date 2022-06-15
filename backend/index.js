@@ -22,6 +22,7 @@ mongoose.connect(process.env.DB_URL, {
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+app.use("/public", express.static("public"));
 app.use("/uploads", express.static("uploads"));
 
 // Routes

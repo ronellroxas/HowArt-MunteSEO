@@ -1,6 +1,10 @@
+const constants = require("../constants");
+const path = require("path");
+const fs = require("fs");
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const fileHelper = require("../helpers/file-helper");
 
 module.exports.login = async (req, res, next) => {
     try{
@@ -39,6 +43,33 @@ module.exports.getLoggedInUser = async (req, res, next) => {
             res.status(404).json({ message: "User not found" })
         }
     }catch(e){
+        next(e);
+    }
+}
+
+module.exports.updateProfilePicture = async (req, res, next) => {
+    try{
+        if(req.file == undefined){
+            return res.status(400).json({ message: "Please provide an image file" });
+        }
+
+        let user = await User.findById(req.userId);
+        if(user == null){
+            return res.status(404).end();
+        }
+        let oldProfileImage = user.profileImage;
+        user.profileImage = req.file.filename;
+        await user.save();
+
+        if(oldProfileImage != undefined){
+            fileHelper.deleteIfExists(path.join(constants.UPLOADS_DIRECTORY, oldProfileImage));
+        }
+
+        res.status(204).end();
+    }catch(e){
+        if(req.file != undefined){
+            fileHelper.deleteIfExists(path.join(constants.UPLOADS_DIRECTORY, req.file.filename));
+        }
         next(e);
     }
 }

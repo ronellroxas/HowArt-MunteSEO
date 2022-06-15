@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
         unique: true,
         trim: true
+    },
+
+    profileImage: {
+        type: String
     }
 });
 
@@ -46,7 +50,8 @@ userSchema.methods.toPlainObject = function(){
         lastName: this.lastName,
         email: this.email,
         bio: this.bio,
-        type: this.type
+        type: this.type,
+        profileImageUrl: this.profileImage == undefined ? "/public/images/default-profile.png": `/uploads/${this.profileImage}`
     }
 }
 
