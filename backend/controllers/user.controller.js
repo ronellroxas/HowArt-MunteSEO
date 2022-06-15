@@ -147,3 +147,26 @@ module.exports.followUser = async (req, res, next) => {
     }
 }
 
+module.exports.getUser = async (req, res, next) => {
+    try{
+        if(!mongoose.Types.ObjectId.isValid(req.params.userId)){
+            return res.status(400).json({ message: "Invalid user id"});
+        }
+
+        let user = await User.findById(req.params.userId);
+
+        if(user == null){
+            return res.status(404).json({ message: "User not found"});
+        }
+
+        let isFollowing = (await Following.findOne({ follower: req.userId, followed: user._id})) != null;
+
+        res.status(200).json({
+            ...user.toPlainObject(),
+            isFollowing
+        });
+    }catch(e){
+        next(e);
+    }
+}
+
