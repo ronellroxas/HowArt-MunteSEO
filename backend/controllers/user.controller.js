@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fileHelper = require("../helpers/file-helper");
 const mongoose = require("mongoose");
+const Following = require("../models/following.model");
 
 module.exports.login = async (req, res, next) => {
     try{
@@ -108,6 +109,40 @@ module.exports.createUser = async (req, res, next) => {
                 }
             })
         }
+        next(e);
+    }
+}
+
+module.exports.followUser = async (req, res, next) => {
+    try{
+        if(req.userId == req.body.userId){
+            return res.status(400).json({ message: "You cannot follow yourself"});
+        }
+
+        let userToFollow = mongoose.Types.ObjectId.isValid(req.body.userId) ? await User.findById(req.body.userId): null;
+
+        if(userToFollow == null){
+            return res.status(404).json({ message: "User not found"});
+        }
+
+        let following = await Following.findOne({
+            follower: req.userId,
+            followed: userToFollow._id
+        });
+
+        if(following){
+            return res.status(400).json({ message: "You are already following the user"});
+        }
+
+        let newFollowing = await new Following({
+            follower: req.userId,
+            followed: userToFollow._id
+        });
+
+        await newFollowing.save();
+
+        res.status(204).end();
+    }catch(e){
         next(e);
     }
 }
