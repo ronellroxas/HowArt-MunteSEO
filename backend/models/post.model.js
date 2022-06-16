@@ -62,7 +62,7 @@ postSchema.methods.toPlainObjectWithUser = function(){
         medium: this.medium,
         subject: this.subject,
         width: this.width,
-        heigth: this.height,
+        height: this.height,
         price: this.price.toString(),
         imageUrl: `/uploads/${this.image}`,
         tags: this.tags,
