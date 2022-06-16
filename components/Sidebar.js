@@ -7,18 +7,7 @@ export default function Sidebar() {
     const [navSize, changeNavSize] = useState("large")
     return (
 
-        <Flex
-            pos="sticky"
-            left="5"
-            h="100vh"
-            marginTop="2.5vh"
-            boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
-            borderRadius="15px"
-            w="300px"
-            flexDir="column"
-            justifyContent="space-between"
-            className='sidebarBG'
-        >
+        <Flex pos="sticky" left="5" h="100vh" marginTop="2.5vh" w="300px" flexDir="column" className='sidebarBG'>
             <Flex
                 p="5%"
                 flexDir="column"

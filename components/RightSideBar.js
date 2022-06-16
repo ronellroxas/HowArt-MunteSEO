@@ -12,8 +12,7 @@ export default function RightSidebar() {
             left="5"
             h="100vh"
             marginTop="2.5vh"
-            boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
-            borderRadius="15px"
+
             w="300px"
             flexDir="column"
             justifyContent="space-between"
