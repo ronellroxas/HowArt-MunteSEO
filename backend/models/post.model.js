@@ -14,6 +14,12 @@ const postSchema = new mongoose.Schema({
         trim: true
     },
 
+    dateCreated: {
+        type: Date,
+        required: true,
+        default: new Date()
+    },
+    
     medium:{
         type: String,
         required: [ true, "Please provide a medium" ],
