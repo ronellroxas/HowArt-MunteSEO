@@ -1,13 +1,14 @@
-import { Grid, GridItem, Input , Text, Stack, HStack, VStack, IconButton, Select , InputGroup, Button, InputLeftElement} from "@chakra-ui/react"
+import { Grid, GridItem, Input , Text, Stack, HStack, VStack, IconButton, Select , Box, InputGroup, Button, InputLeftElement} from "@chakra-ui/react"
 import { CgOptions } from 'react-icons/cg';
 import { FiSearch } from 'react-icons/fi';
 import React from 'react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
-import { LeftArrow, RightArrow } from "../public/arrows.tsx";
-import Navbar from "../components/NavBar.js";
-import RightSideBar from "../components/RightSideBar.js";
-import Sidebar from "../components/Sidebar.js";
-import RightSidebar from "../components/RightSideBar.js";
+import { LeftArrow, RightArrow } from "../components/arrows.tsx";
+import LandingPagePosts from "../components/landingPagePosts.js";
+import Navbar from "./NavBar.js";
+import RightSideBar from "./RightSideBar.js";
+import Sidebar from "./Sidebar.js";
+import RightSidebar from "./RightSideBar.js";
 
 const getItems = () =>
   Array(20)
@@ -106,12 +107,7 @@ export default function landingPage() {
             <GridItem colSpan={1} margin="10px">
               <VStack width="100%" spacing="10px">
                 {paintingCol1.map((painting1) => (
-                  <div className="landingImageContainer">
-                    <img height="auto" width="100%" src={painting1.url}/>
-                    <div className="bottomLeft">
-                      <img className="landingPosts" src={painting1.userPic}/> {painting1.userName}
-                    </div>
-                  </div>
+                  <LandingPagePosts key={painting1.url} url={painting1.url} userPic={painting1.userPic} userName={painting1.userName}/>
                 ))
                 }
               </VStack>
@@ -119,12 +115,7 @@ export default function landingPage() {
             <GridItem colSpan={1} margin="10px">
               <VStack width="100%" spacing="10px">
                 {paintingCol2.map((painting2) => (
-                  <div className="landingImageContainer">
-                    <img height="auto" width="100%" src={painting2.url}/>
-                    <div className="bottomLeft">
-                      <img className="landingPosts" src={painting2.userPic}/> {painting2.userName}
-                    </div>
-                  </div>
+                  <LandingPagePosts key={painting2.url} url={painting2.url} userPic={painting2.userPic} userName={painting2.userName}/>
                 ))
                 }
               </VStack>
@@ -132,12 +123,7 @@ export default function landingPage() {
             <GridItem colSpan={1} margin="10px">
               <VStack width="100%" spacing="10px">
                 {paintingCol3.map((painting3) => (
-                  <div className="landingImageContainer">
-                    <img height="auto" width="100%" src={painting3.url}/>
-                    <div className="bottomLeft">
-                      <img className="landingPosts" src={painting3.userPic}/> {painting3.userName}
-                    </div>
-                  </div>
+                  <LandingPagePosts key={painting3.url} url={painting3.url} userPic={painting3.userPic} userName={painting3.userName}/>
                 ))
                 }
               </VStack>

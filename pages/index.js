@@ -5,6 +5,8 @@ import RightSidebar from '../components/RightSideBar'
 import Sidebar from '../components/Sidebar'
 import styles from '../styles/Home.module.css'
 import { Flex } from '@chakra-ui/react'
+import LandingPage from '../components/landingPage'
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -21,22 +23,10 @@ export default function Home() {
         <NavBar />
         <Flex flexDir="row">
           <Sidebar />
+          <LandingPage></LandingPage>
           <RightSidebar />
         </Flex>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
 }
