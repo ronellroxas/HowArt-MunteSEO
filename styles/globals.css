@@ -128,3 +128,7 @@ a {
   float:left;
   margin-right: 5px;
 }
+
+.hideScrollbar {
+  overflow: auto;
+}
