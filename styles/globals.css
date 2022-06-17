@@ -129,6 +129,6 @@ a {
   margin-right: 5px;
 }
 
-.hideScrollbar {
+.addScrollbar {
   overflow: auto;
 }

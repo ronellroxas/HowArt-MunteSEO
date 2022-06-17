@@ -58,7 +58,7 @@ export default function LandingPage() {
             ))}
           </ScrollMenu>
         </GridItem>
-        <GridItem colStart={3} colEnd={8} rowSpan={3} marginLeft="8" marginRight="8" className="hideScrollbar">
+        <GridItem colStart={3} colEnd={8} rowSpan={3} marginLeft="8" marginRight="8" className="addScrollbar">
           <LandingCollage></LandingCollage>
         </GridItem>
       </Grid>
