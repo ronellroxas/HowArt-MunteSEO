@@ -1,52 +1,56 @@
-import React, { Component, Fragment } from 'react';
-import { Container, Flex, Divider, InputGroup, Input, InputRightElement, Stack, Button, Text, Lorem, IconButton, Heading, Modal, ModalOverlay, ModalHeader, ModalContent, ModalCloseButton, Box, ModalBody, ModalFooter } from '@chakra-ui/react'
+import React from 'react';
+import { Flex, Stack, Button, Text, IconButton, Modal, ModalOverlay, ModalHeader, ModalContent, ModalCloseButton, Box, ModalBody, ModalFooter } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
 import { FiShoppingCart } from 'react-icons/fi'
-import TrendingText from './trendingText'
+import Image from 'next/image'
+
 export default function NavBar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const finalRef = React.useRef(null)
     return (
-        <Box backgroundColor={"Black"} w="full" h="5 vh" bg='gray.900' px={4}>
-            <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                <Box paddingLeft="72px">
-                    <img
-                        src="/HowArt MUnteSEO.png"
-                        alt="Logo"
-                        height="100%"
-                        width="100%"
-                    />
-                </Box>
+        <>
+            <Box backgroundColor="#3F3F3F" w="100%" h="1vh" px={50} minH={50}>
+                <Flex w='100%' h='100%' justifyContent={'space-between'} alignItems={'center'}>
+                    <Box>
+                        <Image
+                            src="/HowArt MUnteSEO.png"
+                            alt="Logo"
+                            width={250}
+                            height={30}
+                            
+                        />
+                    </Box>
 
-                <Flex alignItems={'center'}>
-                    <Stack direction={'row'} spacing={7}>
+                    <Flex alignItems={'center'}>
+                        <Stack direction={'row'} spacing={10}>
 
-                        <IconButton variant='outline' backgroundColor={'#BC8B6F'} fontSize='20px' icon={<FiShoppingCart />} />
-                        <Button mt={0} onClick={onOpen} backgroundColor={'#BC8B6F'} >
-                            Log Out
-                        </Button>
+                            <IconButton border='0px' borderRadius={50} variant='outline' backgroundColor='#D7C9B8' fontSize='1em' icon={<FiShoppingCart />} p={10}/>
+                            <Button border='0px'  borderRadius={10} onClick={onOpen} backgroundColor='#BC8B6F' color="white" py={5} px={20}>
+                                Logout
+                            </Button>
 
 
-                    </Stack>
+                        </Stack>
+                    </Flex>
                 </Flex>
-            </Flex>
+            </Box>
 
             <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Logout</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                        <Text>Are you sure you want to logout?</Text>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button backgroundColor={"#BC8B6F"} mr={3} onClick={onClose}>
-                            No
-                        </Button>
-                        <Button variant='ghost'>Yes</Button>
-                    </ModalFooter>
-                </ModalContent>
+            <ModalOverlay />
+            <ModalContent w='20%' >
+                <ModalHeader>Logout</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                    <Text>Are you sure you want to logout?</Text>
+                </ModalBody>
+                <ModalFooter>
+                    <Button backgroundColor={"#BC8B6F"} mr={3} onClick={onClose}>
+                        No
+                    </Button>
+                    <Button variant='ghost'>Yes</Button>
+                </ModalFooter>
+            </ModalContent>
             </Modal>
-        </Box>
+        </>
     )
 }

@@ -9,11 +9,10 @@ export default function RightSidebar() {
     return (
         <Flex
             pos="sticky"
-            left="5"
+            right="0"
             h="100vh"
-            marginTop="2.5vh"
-
-            w="300px"
+            
+            minW="280px" 
             flexDir="column"
             justifyContent="space-between"
             className='sidebarBG'
