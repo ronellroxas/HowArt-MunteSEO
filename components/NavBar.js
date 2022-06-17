@@ -9,7 +9,8 @@ export default function NavBar() {
     const finalRef = React.useRef(null)
     return (
         <>
-            <Box backgroundColor="#3F3F3F" w="100%" h="1vh" px={50} minH={50}>
+            <Box classname = "navbar" backgroundColor="#3F3F3F" w="100%" h="1vh" px={50} minH={50} align="center"  justify="center" position="fixed" zIndex={100}>
+            
                 <Flex w='100%' h='100%' justifyContent={'space-between'} alignItems={'center'}>
                     <Box>
                         <Image

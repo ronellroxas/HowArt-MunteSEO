@@ -8,7 +8,7 @@ export default function RightSidebar() {
     const [navSize, changeNavSize] = useState("large")
     return (
         <Flex
-            pos="sticky"
+            pos="fixed"
             right="0"
             h="100vh"
             
@@ -16,6 +16,7 @@ export default function RightSidebar() {
             flexDir="column"
             justifyContent="space-between"
             className='sidebarBG'
+            zIndex={99} mt ={10}
         >
             <Flex
                 p="5%"
