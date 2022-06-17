@@ -45,12 +45,13 @@ const paintingCol3 = [
   {url: 'https://www.thoughtco.com/thmb/Zya6PS3m6XjRAmVo1HONvY9DW_A=/3865x2174/smart/filters:no_upscale()/abstract-paper-flower-pattern-656688606-5acfba2eae9ab80038461ca0.jpg',
   userPic: 'http://www.shenyunperformingarts.org/data/image/original/2021/05/29/63ea2c642aaee001d818604fe1d9a811.jpg', userName: '@LeonadroDaVinci'}];
 
-export default function landingPage() {
+export default function LandingPage() {
   const [items, setItems] = React.useState(getItems);
 
   return (
-    <div className="landingContainer">
+    <Box className="landingContainer" h='100vh' w="100%">
       <Grid 
+        w="100%"
         h="100vh"
         templateColumns="repeat(9, 1fr)"
         templateRows="repeat(5, 1fr)"
@@ -64,15 +65,16 @@ export default function landingPage() {
                   bgColor="#E4E4E4"
                   borderRadius="10px"
                   pointerEvents='none'
-                  children={<FiSearch color='gray.300'/>}
-                />
+                >
+                  <FiSearch color='gray.300'/>
+                </InputLeftElement>
                 <Input className="landingMargin" borderRadius="10px" bgColor="#E4E4E4" placeholder='Pixel Art' />
                 <IconButton aria-label='landingOption' variant='outline' bgColor="transparent" borderRadius="15px" color="white" icon={<CgOptions />}
 />
               </InputGroup>
             </HStack>
         </GridItem>
-        <GridItem colStart={3} colEnd={8} rowSpan={1}>
+        <GridItem colStart={3} colEnd={8} rowSpan={1} w='55vw'>
           <Text color="#7D7D7D" fontSize="14" marginTop="60px" marginLeft="35px">
             Categories you might want to explore...
           </Text>
@@ -100,7 +102,7 @@ export default function landingPage() {
             </Select>
           </HStack>
         </GridItem>
-        <GridItem colStart={3} colEnd={8} rowSpan={2} marginLeft="30px" marginRight="30px" marginTop="-100px">
+        <GridItem colStart={3} colEnd={8} rowSpan={1} marginLeft="30px" marginRight="30px">
           <Grid
             templateColumns="repeat(3, 1fr)"
           >
@@ -131,6 +133,6 @@ export default function landingPage() {
           </Grid>
         </GridItem>
       </Grid>
-    </div>
+    </Box>
   )
 }
