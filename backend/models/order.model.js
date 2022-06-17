@@ -28,7 +28,7 @@ const orderSchema = new mongoose.Schema({
 
     title: {
         type: String,
-        required: c,
+        required: [ true, "Please provide title" ],
         trim: true,
         max: 200
     },
@@ -59,7 +59,7 @@ const orderSchema = new mongoose.Schema({
         required: [ true, "Please provide a price" ]
     },
 
-    reference_images: [{
+    ref_images: [{
         type: String,
         required: [ true, "Please provide an image file" ],
         trim: true
@@ -68,7 +68,46 @@ const orderSchema = new mongoose.Schema({
 {
     toObject: { virtuals: true },
     toJSON: { virtuals: true }
-});
+})
+
+//More readable format of date_created
+orderSchema.virtual('date_created_text')
+.get(function() {
+  return this.date_created.toDateString();
+})
+
+//More readable format of date_deadline
+orderSchema.virtual('date_deadline_text')
+.get(function() {
+  return this.date_deadline.toDateString();
+})
 
 const Order = mongoose.model("Order", orderSchema);
+
+// Get all orders that fit the query and convert to object
+exports.getAll = (query, next) => {
+  Order.find(query, (err, orders) => {
+    if (err) throw err;
+    const orderObjects = [];
+    orders.forEach((doc) => {
+      orderObjects.push(doc.toObject());
+    })
+    next(err, orderObjects);
+  })
+}
+
+// Get all orders that fit the query
+exports.getMany = (query, next) => {
+    Order.find(query, (err, order) => {
+        next(err, order);
+    })
+}
+
+// Get one order that fits the query
+exports.getOne = (query, next) => {
+    Order.findOne(query, (err, order) => {
+        next(err, order);
+    })
+}
+
 module.exports = Order;
