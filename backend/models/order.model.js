@@ -84,6 +84,21 @@ orderSchema.virtual('date_deadline_text')
 
 const Order = mongoose.model("Order", orderSchema);
 
+// Create a new order
+exports.create = (object, next) => {
+    const newOrder = new Order(object);
+    newOrder.save((err, order) => {
+        next(err, order);
+    })
+}
+
+// Update an order
+exports.updateOne = (query, newvalues, next) => {
+    Order.updateOne(query, newvalues, (err, order) => {
+        next(err, order);
+    })
+}
+
 // Get all orders that fit the query and convert to object
 exports.getAll = (query, next) => {
   Order.find(query, (err, orders) => {
