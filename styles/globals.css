@@ -81,6 +81,16 @@ a {
   color: rgb(108, 77, 60) !important;
 }
 
+.brownText{
+  color: rgb(108, 77, 60)
+}
+
+.brownBackground{
+  background-color: rgb(108, 77, 60)
+}
+
+
+
 .landingContainer {
   height: 100vh;
   width: 100vw;
