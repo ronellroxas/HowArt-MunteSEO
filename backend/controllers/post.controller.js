@@ -67,7 +67,16 @@ module.exports.getPostById = async (req, res, next) => {
             return res.status(404).json({ message: "Post with specified is is not found" });
         }
 
-        res.status(200).json(post.toPlainObjectWithUser());
+        let [ likeCount, loggedInUserLike ] = await Promise.all([
+            PostLike.count({ post: post._id }),
+            PostLike.findOne({ post: post._id, liker: req.userId })
+        ]);
+
+        res.status(200).json({
+            ...post.toPlainObjectWithUser(),
+            likeCount,
+            hasLiked: loggedInUserLike != null
+        });
     }catch(e){
         next(e);
     }
