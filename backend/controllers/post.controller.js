@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Post = require("../models/post.model");
+const PostLike = require("../models/post-like.model");
 
 /**
  * Creates a new post as the currently logged-in user
@@ -80,6 +81,48 @@ module.exports.getRecentPosts = async (req, res, next) => {
         let posts = await Post.find().populate("user").sort("-dateCreated").limit(50);
 
         res.status(200).json(posts.map((post) => post.toPlainObjectWithUser()));
+    }catch(e){
+        next(e);
+    }
+}
+
+/**
+ * Likes the post specified in the postId field of the body as the currently logged-in user. The user cannot
+ * like their own posts or like posts that they have already liked previously
+ */
+module.exports.likePost = async (req, res, next) => {
+    try{
+        if(!mongoose.Types.ObjectId.isValid(req.body.postId)){
+            return res.status(400).json({ message: "Invalid post id"});
+        }
+
+        let post = await Post.findById(req.body.postId);
+
+        if(post == null){
+            return res.status(404).json({ message: "Post not found" });
+        }
+
+        if(post.user.toString() == req.userId){
+            return res.status(400).json({ message: "You cannot like your own post" });
+        }
+
+        let existingLike = await PostLike.findOne({
+            liker: req.userId,
+            post: post._id 
+        });
+
+        if(existingLike != null){
+            return res.status(400).json({ message: "You have already liked the post" });
+        }
+
+        let like = new PostLike({
+            liker: req.userId,
+            post: post._id
+        });
+
+        await like.save();
+
+        res.status(204).end();
     }catch(e){
         next(e);
     }
