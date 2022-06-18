@@ -71,3 +71,16 @@ module.exports.getPostById = async (req, res, next) => {
         next(e);
     }
 }
+
+/**
+ * Gets the 50 most recently created posts
+ */
+module.exports.getRecentPosts = async (req, res, next) => {
+    try{
+        let posts = await Post.find().populate("user").sort("-dateCreated").limit(50);
+
+        res.status(200).json(posts.map((post) => post.toPlainObjectWithUser()));
+    }catch(e){
+        next(e);
+    }
+}
