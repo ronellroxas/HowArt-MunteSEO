@@ -72,7 +72,8 @@ postSchema.methods.toPlainObjectWithUser = function(){
         price: this.price.toString(),
         imageUrl: `/uploads/${this.image}`,
         tags: this.tags,
-        user: this.user.toPlainObject()
+        dateCreated: this.dateCreated.toString(),
+        user: this.user.toPlainObject(),
     }
 }
 

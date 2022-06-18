@@ -33,3 +33,18 @@ module.exports.createPost = async (req, res, next) => {
         next(e);
     }
 }
+
+/**
+ * Gets all posts that are created by the user whose id is specified in the userId query parameter
+ */
+module.exports.getPostsByUser = async (req, res, next) => {
+    try{
+        const posts = await Post.find({
+            user: req.query.userId
+        }).sort("-dateCreated").populate("user");
+
+        res.status(200).json(posts.map((post) => post.toPlainObjectWithUser()));
+    }catch(e){
+        next(e);
+    }
+}
