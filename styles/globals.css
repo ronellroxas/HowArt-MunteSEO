@@ -80,3 +80,55 @@ a {
 .sidebarUsernameColor {
   color: rgb(108, 77, 60) !important;
 }
+
+.landingContainer {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(../public/landingImage.png);
+  background-repeat: repeat-x;
+}
+
+.landingTitle {
+  margin-top: 40px;
+  margin-bottom: -10px;
+}
+
+.landingSubtitle {
+  margin-left: 5px;
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+
+.landingMargin {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.landingImageContainer {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bottomLeft {
+  position: absolute;
+  float:left;
+  bottom: 8px;
+  left: 12px;
+}
+
+.landingPosts {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  float:left;
+  margin-right: 5px;
+}
+
+.addScrollbar {
+  overflow: auto;
+}
