@@ -5,74 +5,56 @@ import TrendingText from './trendingText'
 
 
 export default function RightSidebar() {
-    const [navSize, changeNavSize] = useState("large")
+
     return (
-        <Flex
-            pos="fixed"
-            right="0"
-            h="100vh"
-            
-            minW="280px" 
-            flexDir="column"
-            justifyContent="space-between"
-            className='sidebarBG'
-            zIndex={99} mt ={10}
-        >
-            <Flex
-                p="5%"
-                flexDir="column"
-                w="100%"
-                alignItems="center"
-                mb={4}
-            >
-                <Flex mt={4} align="center">
-                    <InputGroup size='lg' backgroundColor={"White"} borderRadius="15px">
-                        <Input placeholder='Search' />
+        <Flex pos="fixed" right="0" minW="280px" flexDir="column" className='sidebarBG' h="100vh" zIndex={99} top="50px">
+            <Flex p="5%" flexDir="column" w="100%" alignItems="center" >
+                <Flex mt="30px" align="center" h="max-content">
+                    <InputGroup size='medium'>
+                        <Input pr='5rem' type="text" placeholder='Search' padding="10px" borderRadius={15} />
                         <InputRightElement width='4.5rem'>
-                            <IconButton variant='outline' backgroundColor={'Gray'} _hover={{ backgroundColor: "#BC8B6F" }} w="75%" fontSize='20px' icon={<FiSearch />} />
+                            <IconButton border='0px' borderRadius={50} variant='outline' backgroundColor='#D7C9B8' fontSize='15px' ml="10px" mt="5px" icon={<FiSearch />} p={10} />
                         </InputRightElement>
                     </InputGroup>
                 </Flex>
 
-                <Flex
-                    p="5%"
-                    flexDir="column"
-                    w="100%"
-                    alignItems="center"
-                    as="nav"
-                >
-                    <Box pos="sticky"
-                        left="5"
-                        h="max-content"
-                        marginTop="40px"
-                        boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
-                        borderRadius="15px"
-                        w="250px"
-                        backgroundColor="#BC8B6F"
-                    >
+                <Flex p="5%" flexDir="column" w="100%" alignItems="center" as="nav" >
+                    <Box pos="sticky" left="5" h="500px" marginTop="40px" boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)" borderRadius="15px" w="250px" backgroundColor="#BC8B6F">
                         <Container alignItems="inherit" w="100%" justifyContent={'space-between'} >
-                            <Heading as="h2" size="md" textAlign={"center"} color={"white"} mt={4}>TRENDING</Heading>
+                            <Heading as="h2" fontSize={"large"} fontWeight="500" textAlign="center" color="white" mb="20px" mt="20px">TRENDING</Heading>
                         </Container>
 
+                        <Divider height='1px' backgroundColor={"white"} />
                         <TrendingText fontSize="lg" text="Realism" />
-                        <Divider />
-                        <TrendingText ml={2} fontSize="lg" text="Realism" />
-                        <Divider />
-                        <TrendingText ml={2} fontSize="lg" text="Digital" />
-                        <Divider />
-                        <TrendingText ml={2} fontSize="lg" text="Nature" />
-                        <Divider />
-                        <TrendingText ml={2} fontSize="lg" text="Digital" />
-                        <Divider />
-                        <TrendingText ml={2} fontSize="lg" text="Nature" />
-                        <Divider />
-                        <TrendingText ml={2} fontSize="lg" text="Nature" />
-                        <Divider />
-                        <TrendingText ml={2} fontSize="lg" text="Digital" />
-                        <Divider />
-                        <TrendingText ml={2} fontSize="lg" text="Nature" />
-                        <Divider />
-                        <TrendingText ml={2} fontSize="lg" text="letlenilead" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
+                        <TrendingText fontSize="lg" text="Realism" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
+                        <TrendingText fontSize="lg" text="Digital" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
+                        <TrendingText fontSize="lg" text="Nature" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
+                        <TrendingText fontSize="lg" text="Digital" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
+                        <TrendingText fontSize="lg" text="Nature" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
+                        <TrendingText fontSize="lg" text="Nature" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
+                        <TrendingText fontSize="lg" text="Digital" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
+                        <TrendingText fontSize="lg" text="Nature" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
+                        <TrendingText fontSize="lg" text="letlenilead" />
+
+                        <Divider height='1px' backgroundColor={"white"} />
                     </Box>
 
                 </Flex>

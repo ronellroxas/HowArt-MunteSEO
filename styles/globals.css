@@ -72,17 +72,27 @@ a {
 .loginOverflow {
   overflow: hidden;
 }
-.navbar{
+
+.navbar {
   position: fixed;
   top: 0;
   z-index: 1000;
 }
+
 .sidebarBG {
   background-color: rgb(215, 201, 184) !important;
 }
 
-.sidebarUsernameColor {
+.sidebarName {
   color: rgb(108, 77, 60) !important;
+  font-size: large;
+  font-weight: 700;
+}
+
+.sidebarUserName {
+  color: rgb(175, 121, 92) !important;
+  font-size: medium;
+  font-weight: 300;
 }
 
 .landingContainer {
@@ -120,7 +130,7 @@ a {
 
 .bottomLeft {
   position: absolute;
-  float:left;
+  float: left;
   bottom: 8px;
   left: 12px;
 }
@@ -129,6 +139,6 @@ a {
   border-radius: 50%;
   height: 30px;
   width: 30px;
-  float:left;
+  float: left;
   margin-right: 5px;
 }

@@ -4,42 +4,27 @@ import { FiTruck, FiUser, FiMail, FiBriefcase, FiBell, FiGlobe, FiSearch } from 
 import SidebarItems from '../components/SidebarItems'
 
 export default function Sidebar() {
-    const [navSize, changeNavSize] = useState("large")
+
     return (
 
-        <Flex pos="fixed"left="0" minW="280px" flexDir="column" className='sidebarBG' h="100vh" zIndex={99} mt ={10}>
-            <Flex
-                p="5%"
-                flexDir="column"
-                w="100%"
-                alignItems="center"
-                mb={4}
-            >
+        <Flex pos="fixed" left="0" minW="280px" flexDir="column" className='sidebarBG' h="100vh" zIndex={99} >
+            <Flex p="5%" flexDir="column" w="100%" alignItems="center" mb={4}>
                 <Flex mt={4} align="center">
                     <Flex flexDir="column" ml={1} display="flex" align="center">
-                        <Avatar size="2xl" src="avatar-1.jpg" mt={4} />
-                        <Heading as="h2" size="md" className='sidebarUsernameColor' mt={4}>Howard Montecillo</Heading>
-
+                        <Avatar size="xl" src="avatar-1.jpg" mt={4} />
+                        <Heading as="h2" size="lg" className='sidebarName' mt={4}>Howard Montecillo</Heading>
+                        <Heading as="h2" size="lg" className='sidebarUsername' mt={4}>@Howard</Heading>
                     </Flex>
                 </Flex>
-
-                <Flex
-                    p="5%"
-                    flexDir="column"
-                    w="100%"
-                    alignItems="flex-start"
-                    as="nav"
-                >
-                    <SidebarItems navSize={navSize} icon={FiUser} title="Profile" />
-                    <SidebarItems navSize={navSize} icon={FiGlobe} title="Community" />
-                    <SidebarItems navSize={navSize} icon={FiMail} title="Messages" />
-                    <SidebarItems navSize={navSize} icon={FiBell} title="Notifications" />
-                    <SidebarItems navSize={navSize} icon={FiTruck} title="My Orders" />
-                    <SidebarItems navSize={navSize} icon={FiBriefcase} title="My Jobs" />
-
+                <Flex p="5%" flexDir="column" w="100%" alignItems="flex-start" as="nav">
+                    <SidebarItems icon={FiUser} title="Profile" />
+                    <SidebarItems icon={FiGlobe} title="Community" />
+                    <SidebarItems icon={FiMail} title="Messages" />
+                    <SidebarItems icon={FiBell} title="Notifications" />
+                    <SidebarItems icon={FiTruck} title="My Orders" />
+                    <SidebarItems icon={FiBriefcase} title="My Jobs" />
                 </Flex>
             </Flex>
-
         </Flex>
 
     )
