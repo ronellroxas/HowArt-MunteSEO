@@ -18,6 +18,10 @@ const upload = multer({
 
 const router = express.Router();
 
+router.post("/like", authMiddlewares.checkAuth, postController.likePost);
 router.post("/", authMiddlewares.checkAuth, upload.single("image"), postController.createPost);
+router.get("/user", authMiddlewares.checkAuth, postController.getPostsByUser);
+router.get("/recent", authMiddlewares.checkAuth, postController.getRecentPosts)
+router.get("/:postId", authMiddlewares.checkAuth, postController.getPostById);
 
 module.exports = router;

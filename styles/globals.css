@@ -142,3 +142,7 @@ a {
   float: left;
   margin-right: 5px;
 }
+
+.addScrollbar {
+  overflow: auto;
+}
