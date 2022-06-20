@@ -49,6 +49,11 @@ const orderSchema = new mongoose.Schema({
         default: 'Unpaid'
     },
 
+    amount_paid: {
+        type: mongoose.Decimal128,
+        default: 0
+    },
+
     price: {
         type: mongoose.Decimal128,
         required: [ true, "Please provide a price" ]
@@ -99,6 +104,7 @@ orderSchema.methods.toPlainObjectWithUser = function(){
         date_created: this.date_created.toString(),
         date_deadline: this.date_deadline.toString(),
         status: this.status,
+        amount_paid: this.amount_paid.toString(),
         price: this.price.toString(),
         details: this.details,
         ref_image: `/uploads/${this.ref_image}`
