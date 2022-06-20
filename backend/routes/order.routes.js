@@ -2,12 +2,24 @@ const express = require("express");
 const router = express.Router();
 const authMiddlewares = require("../middlewares/auth.middlewares");
 const orderController = require("../controllers/order.controller");
+const multer = require("multer");
+const fileHelper = require("../helpers/file-helper");
+const uploadsStorageEngine = require("../storage-engines/uploads.storage-engine");
+const upload = multer({
+    storage: uploadsStorageEngine,
+    fileFilter: function(req, file, cb){
+        if(!fileHelper.isExtensionImage(file.originalname)){
+            return cb(new Error("Only images may be uploaded"));
+        }
+        cb(null, true);
+    }
+});
 
 //my orders page
 router.get("/my-orders", orderController.myOrders);
 router.get("/order-details", orderController.orderDetails);
 router.post("/pay-order", orderController.payOrder);
-router.post("/create-order", orderController.createOrder);
+router.post("/create-order", authMiddlewares.checkAuth, upload.single("image"), orderController.createOrder);
 
 //my jobs page
 router.get("/my-jobs", orderConteroller.myJobs);
