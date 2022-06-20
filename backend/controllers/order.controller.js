@@ -64,3 +64,20 @@ module.exports.createOrder = async (req, res, next) => {
         next (e);
     }
 }
+
+//change job details
+module.exports.editJobDetails = async (req, res, next) => {
+    try {
+        let order = await Order.findById(req.body.orderId);
+        if (order == null) {
+            return res.status(404).end();
+        }
+
+        order.title = req.body.title
+        order.date_deadline = req.body.date_deadline
+        await order.save()
+        res.status(204).end();
+    } catch (e) {
+        next (e);
+    }
+}
