@@ -16,13 +16,13 @@ const upload = multer({
 });
 
 //my orders page
-router.get("/my-orders", orderController.myOrders);
+router.get("/my-orders", authMiddlewares.checkAuth, orderController.myOrders);
 router.get("/order-details", orderController.orderDetails);
 router.post("/pay-order", orderController.payOrder);
 router.post("/create-order", authMiddlewares.checkAuth, upload.single("image"), orderController.createOrder);
 
 //my jobs page
-router.get("/my-jobs", orderConteroller.myJobs);
+router.get("/my-jobs", authMiddlewares.checkAuth, orderConteroller.myJobs);
 router.post("/edit-job-details", orderController.editJobDetails);
 router.post("/update-status", orderController.updateStatus);
 

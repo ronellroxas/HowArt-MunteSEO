@@ -5,7 +5,30 @@ const Order = require("../models/order.model");
 //display my orders page
 module.exports.myOrders = async (req, res, next) => {
     try {
+        let orders = await Order.find({client: req.userId});
 
+        let loopPromise = ()  => {
+            return new Promise ((resolve, reject) => {
+                try {
+                    var order_arr = [];
+                    if (orders.length > 0) {
+                        orders.forEach(async function(doc, i) {
+                            order_arr.push(doc.toPlainObjectWithUser());
+                            if (i == orders.length - 1) {
+                                resolve(order_arr);
+                            }
+                        })
+                    } else {
+                        resolve(order_arr);
+                    }
+              } catch (e) {
+                  reject([]);
+              }
+          })
+        }
+
+        let order_arr = await loopPromise();
+        res.status(200).json({order_arr});
     } catch (e) {
         next (e);
     }
@@ -14,7 +37,12 @@ module.exports.myOrders = async (req, res, next) => {
 //display order details
 module.exports.orderDetails = async (req, res, next) => {
     try {
+        let order = await Order.findById(req.body.orderId);
+        if(order == null){
+            return res.status(404).json({ message: "Order not found"});
+        }
 
+        res.status(200).json(order.toPlainObjectWithUser());
     } catch (e) {
         next (e);
     }
@@ -67,6 +95,38 @@ module.exports.createOrder = async (req, res, next) => {
 }
 
 /*MY JOBS PAGE (ARTIST SIDE)*/
+//display my jobs page
+module.exports.myJobs = async (req, res, next) => {
+    try {
+        let orders = await Order.find({artist: req.userId});
+
+        let loopPromise = ()  => {
+            return new Promise ((resolve, reject) => {
+                try {
+                    var order_arr = [];
+                    if (orders.length > 0) {
+                        orders.forEach(async function(doc, i) {
+                            order_arr.push(doc.toPlainObjectWithUser());
+                            if (i == orders.length - 1) {
+                                resolve(order_arr);
+                            }
+                        })
+                    } else {
+                        resolve(order_arr);
+                    }
+              } catch (e) {
+                  reject([]);
+              }
+          })
+        }
+
+        let order_arr = await loopPromise();
+        res.status(200).json({order_arr});
+    } catch (e) {
+        next (e);
+    }
+}
+
 //change job details
 module.exports.editJobDetails = async (req, res, next) => {
     try {
