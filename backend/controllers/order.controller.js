@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Order = require("../models/order.model");
 
+/*MY ORDERS PAGE (CLIENT SIDE)*/
 //display my orders page
 module.exports.myOrders = async (req, res, next) => {
     try {
@@ -65,6 +66,7 @@ module.exports.createOrder = async (req, res, next) => {
     }
 }
 
+/*MY JOBS PAGE (ARTIST SIDE)*/
 //change job details
 module.exports.editJobDetails = async (req, res, next) => {
     try {
@@ -75,6 +77,22 @@ module.exports.editJobDetails = async (req, res, next) => {
 
         order.title = req.body.title
         order.date_deadline = req.body.date_deadline
+        await order.save()
+        res.status(204).end();
+    } catch (e) {
+        next (e);
+    }
+}
+
+//updaet job status to completed or cancelled
+module.exports.updateStatus = async (req, res, next) => {
+    try {
+        let order = await Order.findById(req.body.orderId);
+        if (order == null) {
+            return res.status(404).end();
+        }
+
+        order.status = req.body.status //either Completed or Cancelled
         await order.save()
         res.status(204).end();
     } catch (e) {

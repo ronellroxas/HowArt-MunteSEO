@@ -24,5 +24,6 @@ router.post("/create-order", authMiddlewares.checkAuth, upload.single("image"), 
 //my jobs page
 router.get("/my-jobs", orderConteroller.myJobs);
 router.post("/edit-job-details", orderController.editJobDetails);
+router.post("/update-status", orderController.updateStatus);
 
 module.exports = router;
