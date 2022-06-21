@@ -2,7 +2,7 @@ import Layout from '../components/layout'
 import React, { useState } from 'react'
 import {Avatar, Box, Button, Badge, Center,  Flex, Grid, GridItem, Heading, HStack, IconButton, Text,  VStack} from "@chakra-ui/react"
 import {CheckIcon, CheckCircleIcon, EmailIcon, ChevronDownIcon, SmallCloseIcon} from '@chakra-ui/icons'
-import LandingPagePosts from "../components/landingPagePosts.js";
+import Posts from "../components/Posts.js";
 export default function Profile() {
    
     const [Followed, changeFollowed] = useState(false)
@@ -89,7 +89,7 @@ export default function Profile() {
                         <GridItem colSpan={1} margin="10px">
                             <VStack width="100%" spacing="10px">
                                 {paintingCol1.map((painting1) => (
-                                <LandingPagePosts key={painting1.url} url={painting1.url} userPic={painting1.userPic} userName={painting1.userName}/>
+                                <Posts key={painting1.url} url={painting1.url} userPic={painting1.userPic} userName={painting1.userName}/>
                                 ))
                                 }
                             </VStack>
@@ -97,7 +97,7 @@ export default function Profile() {
                         <GridItem colSpan={1} margin="10px">
                             <VStack width="100%" spacing="10px">
                                 {paintingCol2.map((painting2) => (
-                                <LandingPagePosts key={painting2.url} url={painting2.url} userPic={painting2.userPic} userName={painting2.userName}/>
+                                <Posts key={painting2.url} url={painting2.url} userPic={painting2.userPic} userName={painting2.userName}/>
                                 ))
                                 }
                             </VStack>
@@ -105,7 +105,7 @@ export default function Profile() {
                         <GridItem colSpan={1} margin="10px">
                             <VStack width="100%" spacing="10px">
                                 {paintingCol3.map((painting3) => (
-                                <LandingPagePosts key={painting3.url} url={painting3.url} userPic={painting3.userPic} userName={painting3.userName}/>
+                                <Posts key={painting3.url} url={painting3.url} userPic={painting3.userPic} userName={painting3.userName}/>
                                 ))
                                 }
                             </VStack>
