@@ -1,9 +1,9 @@
 import Layout from '../components/layout'
 import {Avatar, Box, Button, Badge, Center,  Flex, Grid, GridItem, Heading, HStack, IconButton, Text,  VStack} from "@chakra-ui/react"
 import {CheckIcon, CheckCircleIcon, EmailIcon, ChevronDownIcon} from '@chakra-ui/icons'
-import Head from 'next/head'
 import LandingPagePosts from "../components/landingPagePosts.js";
-export default function profile_client() {
+
+export default function Profile() {
    
 
     const paintingCol1 = [
@@ -39,7 +39,7 @@ export default function profile_client() {
 
 
     return (
-        <Box  w='100%' h='100%'  p={4} className="brownText" >
+        <Box  w='100vw' h='100%' className="brownText" >
             <Grid h="25vh" templateRows='repeat(3, 1fr)' templateColumns='repeat(7, 1fr)'>
                 <GridItem rowSpan={3} colSpan={2} centering>
                     <Center w="100%" h="100%">
@@ -107,7 +107,7 @@ export default function profile_client() {
     )
   }
   
-profile_client.getLayout = function getLayout(page) {
+Profile.getLayout = function getLayout(page) {
     return (
       <Layout>{page}</Layout>
     )
