@@ -1,155 +1,152 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .loginPadding {
-  padding-top: 130px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
+    padding-top: 130px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
 }
 
 .loginMargin {
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 15px;
-  width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    width: 70%;
 }
 
 .loginSpacing {
-  padding-bottom: 8px;
+    padding-bottom: 8px;
 }
 
 .smallText {
-  font-size: 14px !important;
+    font-size: 14px !important;
 }
 
 .fontStylePoppins {
-  font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .loginDivider {
-  color: #BABABA;
-  font-size: 12px !important;
+    color: #BABABA;
+    font-size: 12px !important;
 }
 
 .loginFontColor {
-  font-family: 'Poppins', sans-serif;
-  color: #696F79;
+    font-family: 'Poppins', sans-serif;
+    color: #696F79;
 }
 
 .loginText {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
 }
 
 .loginIconButton {
-  background-color: white !important;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-left: 10px;
-  margin-right: 10px;
+    background-color: white !important;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .loginUnderline {
-  text-decoration: underline !important;
+    text-decoration: underline !important;
 }
 
 .loginOverflow {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .navbar {
-  position: fixed;
-  top: 0;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
 .sidebarBG {
-  background-color: rgb(215, 201, 184) !important;
+    background-color: rgb(215, 201, 184) !important;
 }
 
 .sidebarName {
-  color: rgb(108, 77, 60) !important;
-  font-size: large;
-  font-weight: 700;
+    color: rgb(108, 77, 60) !important;
+    font-size: large;
+    font-weight: 700;
 }
 
 .sidebarUserName {
-  color: rgb(175, 121, 92) !important;
-  font-size: medium;
-  font-weight: 300;
+    color: rgb(175, 121, 92) !important;
+    font-size: medium;
+    font-weight: 300;
 }
 
-.brownText{
-  color: rgb(108, 77, 60)
+.brownText {
+    color: rgb(108, 77, 60)
 }
 
-.brownBackground{
-  background-color: rgb(108, 77, 60)
+.brownBackground {
+    background-color: rgb(108, 77, 60)
 }
-
-
 
 .landingContainer {
-  height: 100vh;
-  width: 100vw;
-  background-image: url(../public/landingImage.png);
-  background-repeat: repeat-x;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../public/landingImage.png);
+    background-repeat: repeat-x;
 }
 
 .landingTitle {
-  margin-top: 40px;
-  margin-bottom: -10px;
+    margin-top: 40px;
+    margin-bottom: -10px;
 }
 
 .landingSubtitle {
-  margin-left: 5px;
-  font-weight: 100;
-  margin-bottom: 20px;
+    margin-left: 5px;
+    font-weight: 100;
+    margin-bottom: 20px;
 }
 
 .landingMargin {
-  margin-left: 5px;
-  margin-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .landingImageContainer {
-  position: relative;
-  text-align: center;
-  color: white;
+    position: relative;
+    text-align: center;
+    color: white;
+    cursor: pointer;
 }
 
 .bottomLeft {
-  position: absolute;
-  float: left;
-  bottom: 8px;
-  left: 12px;
+    position: absolute;
+    float: left;
+    bottom: 8px;
+    left: 12px;
 }
 
 .landingPosts {
-  float: left;
-  margin-right: 5px;
+    float: left;
+    margin-right: 5px;
 }
 
 .addScrollbar {
-  overflow: auto;
+    overflow: auto;
 }
