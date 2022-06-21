@@ -47,7 +47,7 @@ export default function Profile() {
         templateRows="repeat(5, 1fr)"
       >
         <GridItem colStart={3} colEnd={8} rowSpan={1}>
-                <Grid h="25vh" w="100%" templateRows='repeat(3, 1fr)' templateColumns='repeat(7, 1fr)'>
+                <Grid h="25vh" w="100%" templateRows='repeat(3, 1fr)' templateColumns='repeat(7, 1fr)' className="brownText">
                     <GridItem rowSpan={3} colSpan={2} centering="true">
                         <Center w="100%" h="100%">
                             <Avatar size="2xl" src="avatar-1.jpg" mt={4} />
@@ -57,10 +57,10 @@ export default function Profile() {
                         <Box  w="100%" h ="5vh">     
                             <HStack  w="100%" h="100%" direction="row" align="center"spacing="10px" justify="space-around">  
                                 <Heading w="40%"fontSize="2xl">@howardmalakas</Heading>
-                                <Button onClick={()=> changeFollowed(!Followed)} w="20%"justify="start" h="30px" fontSize="md" colorScheme="orange" color="white"> {Followed ? <Center w="100%" h="100%"><CheckIcon marginEnd="2px"/>Followed</Center> : <Center w="100%" h="100%">Follow</Center>} </Button>
-                                <Badge w="25%"justify="start"  h="30px" fontSize="md" colorScheme="orange"><Center w="100%" h="100%"> <CheckCircleIcon marginEnd="2px"/> Commission</Center></Badge>
-                                <IconButton size="xs"colorScheme="orange" icon={<EmailIcon/>}/>
-                                <IconButton size="xs" colorScheme="orange" icon={<ChevronDownIcon/>}/>
+                                <Button onClick={()=> changeFollowed(!Followed)} w="20%"justify="start" h="30px" fontSize="md" backgroundColor="#BC8B6F" color="white"> {Followed ? <Center w="100%" h="100%"><CheckIcon marginEnd="2px"/>Followed</Center> : <Center w="100%" h="100%">Follow</Center>} </Button>
+                                <Badge w="25%"justify="start"  h="30px" fontSize="md" backgroundColor="#BC8B6F" color="white"><Center w="100%" h="100%"> <CheckCircleIcon marginEnd="2px" color="green"/> Commission</Center></Badge>
+                                <IconButton size="xs" backgroundColor="#BC8B6F" color="white" icon={<EmailIcon/>}/>
+                                <IconButton size="xs" backgroundColor="#BC8B6F" color="white" icon={<ChevronDownIcon/>}/>
                             </HStack>
                         </Box>
                         <Flex w="100%" h ="10vh" align="center" justify="space-around" direction="row">
@@ -80,10 +80,10 @@ export default function Profile() {
                     
                     <HStack direction="row" w="100%" h="5vh" align="center" spacing="10px" justify="start">
                         <Heading w="20%" fontSize="lg"> Common Tags:</Heading>
-                        <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#3d</Box>
-                        <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#stylized</Box>
-                        <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#pixel</Box>
-                        <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#oil</Box>
+                        <Box borderRadius='xl'  backgroundColor="#BC8B6F" color='white' h="60%" p="3px">#3d</Box>
+                        <Box borderRadius='xl'  backgroundColor="#BC8B6F" color='white' h="60%" p="3px">#stylized</Box>
+                        <Box borderRadius='xl'  backgroundColor="#BC8B6F" color='white' h="60%" p="3px">#pixel</Box>
+                        <Box borderRadius='xl'  backgroundColor="#BC8B6F" color='white' h="60%" p="3px">#oil</Box>
                     </HStack>
                     <Grid templateColumns="repeat(3, 1fr)" >
                         <GridItem colSpan={1} margin="10px">
