@@ -1,10 +1,11 @@
 import Layout from '../components/layout'
+import React, { useState } from 'react'
 import {Avatar, Box, Button, Badge, Center,  Flex, Grid, GridItem, Heading, HStack, IconButton, Text,  VStack} from "@chakra-ui/react"
-import {CheckIcon, CheckCircleIcon, EmailIcon, ChevronDownIcon} from '@chakra-ui/icons'
+import {CheckIcon, CheckCircleIcon, EmailIcon, ChevronDownIcon, SmallCloseIcon} from '@chakra-ui/icons'
 import LandingPagePosts from "../components/landingPagePosts.js";
-
 export default function Profile() {
    
+    const [Followed, changeFollowed] = useState(false)
 
     const paintingCol1 = [
         {url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
@@ -39,71 +40,75 @@ export default function Profile() {
 
 
     return (
-        <Box  w='100vw' h='100%' className="brownText" >
-            <Grid h="25vh" templateRows='repeat(3, 1fr)' templateColumns='repeat(7, 1fr)'>
-                <GridItem rowSpan={3} colSpan={2} centering>
-                    <Center w="100%" h="100%">
-                        <Avatar size="2xl" src="avatar-1.jpg" mt={4} />
-                    </Center>
-                </GridItem>
-                <GridItem rowSpan={3} colSpan={5}>
-                    <Box  w="100%" h ="5vh">     
-                        <HStack  w="100%" h="100%" direction="row" align="center"spacing="10px" justify="space-around">  
-                            <Heading w="40%"fontSize="2xl">@howardmalakas</Heading>
-                            <Button w="20%"justify="start" h="30px" fontSize="md" className='brownBackground'><Center w="100%" h="100%"> <CheckIcon marginEnd="2px"/>Followed</Center> </Button>
-                            <Badge w="25%"justify="start"  h="30px" fontSize="md" className='brownBackground'><Center w="100%" h="100%"> <CheckCircleIcon marginEnd="2px"/> Commission</Center></Badge>
-                            <IconButton size="xs"colorScheme="blue" icon={<EmailIcon/>}/>
-                            <IconButton size="xs" colorScheme="blue" icon={<ChevronDownIcon/>}/>
-                        </HStack>
-                    </Box>
-                    <Flex w="100%" h ="10vh" align="center" justify="space-around" direction="row">
-                            <Text w="30%" fontSize="xl">31 posts</Text>
-                            <Text w="30%" fontSize="xl">28k followers</Text>
-                            <Text w="30%" fontSize="xl">129 following</Text>
-                    </Flex>
-                    <Box  w="100%" h ="10vh" align="start">
-                        <Heading w="40%"fontSize="xl">Howard Montecillo</Heading>
-                        <Text fontSize="lg">3D portrait artist! I do different styles</Text>
-                    </Box>
-                </GridItem>
-            </Grid>
-            <Box w="100%" h="5vh" p={4} className="brownText">
-                
-                <HStack direction="row" w="100%" h="5vh" align="center" spacing="10px" justify="start">
-                    <Heading w="10%" fontSize="lg"> Common Tags:</Heading>
-                    <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#3d</Box>
-                    <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#stylized</Box>
-                    <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#pixel</Box>
-                    <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#oil</Box>
-                </HStack>
-                <Grid templateColumns="repeat(3, 1fr)" >
-                    <GridItem colSpan={1} margin="10px">
-                        <VStack width="100%" spacing="10px">
-                            {paintingCol1.map((painting1) => (
-                            <LandingPagePosts key={painting1.url} url={painting1.url} userPic={painting1.userPic} userName={painting1.userName}/>
-                            ))
-                            }
-                        </VStack>
+
+        <div>
+            <Box  w='100%' h='100%'  p={4} className="brownText" >
+                <Grid h="25vh" templateRows='repeat(3, 1fr)' templateColumns='repeat(7, 1fr)'>
+                    <GridItem rowSpan={3} colSpan={2} centering>
+                        <Center w="100%" h="100%">
+                            <Avatar size="2xl" src="avatar-1.jpg" mt={4} />
+                        </Center>
                     </GridItem>
-                    <GridItem colSpan={1} margin="10px">
-                        <VStack width="100%" spacing="10px">
-                            {paintingCol2.map((painting2) => (
-                            <LandingPagePosts key={painting2.url} url={painting2.url} userPic={painting2.userPic} userName={painting2.userName}/>
-                            ))
-                            }
-                        </VStack>
-                    </GridItem>
-                    <GridItem colSpan={1} margin="10px">
-                        <VStack width="100%" spacing="10px">
-                            {paintingCol3.map((painting3) => (
-                            <LandingPagePosts key={painting3.url} url={painting3.url} userPic={painting3.userPic} userName={painting3.userName}/>
-                            ))
-                            }
-                        </VStack>
+                    <GridItem rowSpan={3} colSpan={5}>
+                        <Box  w="100%" h ="5vh">     
+                            <HStack  w="100%" h="100%" direction="row" align="center"spacing="10px" justify="space-around">  
+                                <Heading w="40%"fontSize="2xl">@howardmalakas</Heading>
+                                <Button onClick={()=> changeFollowed(!Followed)} w="20%"justify="start" h="30px" fontSize="md" colorScheme="orange" color="white"> {Followed ? <Center w="100%" h="100%"><CheckIcon marginEnd="2px"/>Followed</Center> : <Center w="100%" h="100%">Follow</Center>} </Button>
+                                <Badge w="25%"justify="start"  h="30px" fontSize="md" colorScheme="orange"><Center w="100%" h="100%"> <CheckCircleIcon marginEnd="2px"/> Commission</Center></Badge>
+                                <IconButton size="xs"colorScheme="orange" icon={<EmailIcon/>}/>
+                                <IconButton size="xs" colorScheme="orange" icon={<ChevronDownIcon/>}/>
+                            </HStack>
+                        </Box>
+                        <Flex w="100%" h ="10vh" align="center" justify="space-around" direction="row">
+                                <Text w="30%" fontSize="xl">31 posts</Text>
+                                <Text w="30%" fontSize="xl">28k followers</Text>
+                                <Text w="30%" fontSize="xl">129 following</Text>
+                        </Flex>
+                        <Box  w="100%" h ="10vh" align="start">
+                            <Heading w="40%"fontSize="xl">Howard Montecillo</Heading>
+                            <Text fontSize="lg">3D portrait artist! I do different styles</Text>
+                        </Box>
                     </GridItem>
                 </Grid>
+                <Box w="100%" h="5vh" p={4} className="brownText">
+                    
+                    <HStack direction="row" w="100%" h="5vh" align="center" spacing="10px" justify="start">
+                        <Heading w="20%" fontSize="lg"> Common Tags:</Heading>
+                        <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#3d</Box>
+                        <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#stylized</Box>
+                        <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#pixel</Box>
+                        <Box borderRadius='lg' className='brownBackground' color='white' h="50%" p="1px">#oil</Box>
+                    </HStack>
+                    <Grid templateColumns="repeat(3, 1fr)" >
+                        <GridItem colSpan={1} margin="10px">
+                            <VStack width="100%" spacing="10px">
+                                {paintingCol1.map((painting1) => (
+                                <LandingPagePosts key={painting1.url} url={painting1.url} userPic={painting1.userPic} userName={painting1.userName}/>
+                                ))
+                                }
+                            </VStack>
+                        </GridItem>
+                        <GridItem colSpan={1} margin="10px">
+                            <VStack width="100%" spacing="10px">
+                                {paintingCol2.map((painting2) => (
+                                <LandingPagePosts key={painting2.url} url={painting2.url} userPic={painting2.userPic} userName={painting2.userName}/>
+                                ))
+                                }
+                            </VStack>
+                        </GridItem>
+                        <GridItem colSpan={1} margin="10px">
+                            <VStack width="100%" spacing="10px">
+                                {paintingCol3.map((painting3) => (
+                                <LandingPagePosts key={painting3.url} url={painting3.url} userPic={painting3.userPic} userName={painting3.userName}/>
+                                ))
+                                }
+                            </VStack>
+                        </GridItem>
+                    </Grid>
+                </Box>
             </Box>
-        </Box>
+        </div>
+
     )
   }
   
