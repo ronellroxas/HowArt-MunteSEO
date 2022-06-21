@@ -10,7 +10,7 @@ export default function SidebarItems({ icon, title, page }) {
                     borderRadius={8} h="45px"
                     _hover={{ textDecor: 'none', backgroundColor: "#6C4D3C" }}
                     w={"100%"} verticalAlign="center" alignItems={"center"}
-                    href={page}
+                    href={title.toLowerCase()}
                 >
                     <MenuButton w="100%">
                         <Flex mt={5} ml={5} >
