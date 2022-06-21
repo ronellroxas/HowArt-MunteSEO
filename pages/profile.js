@@ -40,11 +40,15 @@ export default function Profile() {
 
 
     return (
-
-        <div>
-            <Box  w='100%' h='100%'  p={4} className="brownText" >
-                <Grid h="25vh" templateRows='repeat(3, 1fr)' templateColumns='repeat(7, 1fr)'>
-                    <GridItem rowSpan={3} colSpan={2} centering>
+        <Grid
+        w="100%"
+        h="100vh"
+        templateColumns="repeat(9, 1fr)"
+        templateRows="repeat(5, 1fr)"
+      >
+        <GridItem colStart={3} colEnd={8} rowSpan={1}>
+                <Grid h="25vh" w="100%" templateRows='repeat(3, 1fr)' templateColumns='repeat(7, 1fr)'>
+                    <GridItem rowSpan={3} colSpan={2} centering="true">
                         <Center w="100%" h="100%">
                             <Avatar size="2xl" src="avatar-1.jpg" mt={4} />
                         </Center>
@@ -70,6 +74,8 @@ export default function Profile() {
                         </Box>
                     </GridItem>
                 </Grid>
+            </GridItem>
+            <GridItem colStart={3} colEnd={8} rowSpan={1} w='55vw'>
                 <Box w="100%" h="5vh" p={4} className="brownText">
                     
                     <HStack direction="row" w="100%" h="5vh" align="center" spacing="10px" justify="start">
@@ -106,9 +112,8 @@ export default function Profile() {
                         </GridItem>
                     </Grid>
                 </Box>
-            </Box>
-        </div>
-
+            </GridItem>
+        </Grid>
     )
   }
   
