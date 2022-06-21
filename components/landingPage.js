@@ -16,7 +16,7 @@ export default function LandingPage() {
 
   return (
     <Box className="landingContainer" h='100vh' w="100%">
-      <Grid 
+      <Grid
         w="100%"
         h="100vh"
         templateColumns="repeat(9, 1fr)"
@@ -54,11 +54,11 @@ export default function LandingPage() {
                 backgroundImage="url('https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg')"
                 backgroundSize="cover"
                 backgroundRepeat="no-repeat"
-              >Button {parseInt(id)+1}</Button>
+              >Button {parseInt(id) + 1}</Button>
             ))}
           </ScrollMenu>
         </GridItem>
-        <GridItem colStart={3} colEnd={8} rowSpan={3} marginLeft="8" marginRight="8" className="addScrollbar">
+        <GridItem colStart={3} colEnd={8} rowSpan={3} marginLeft="8" marginRight="8">
           <LandingCollage></LandingCollage>
         </GridItem>
       </Grid>
