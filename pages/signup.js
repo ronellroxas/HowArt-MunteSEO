@@ -3,6 +3,8 @@ import { FcGoogle } from "react-icons/fc";
 import { FaLinkedinIn } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import { Formik, Field, Form } from 'formik';
+import axios from 'axios';
+import Router from 'next/router';
 
 export default function signup() {
 
@@ -14,7 +16,7 @@ export default function signup() {
         return errorMessage;
     }
 
-    function validatePassword(value) {
+    function validateField(value) {
         let errorMessage;
         if (value === '') {
             errorMessage = 'Enter a password';
@@ -22,19 +24,39 @@ export default function signup() {
         return errorMessage;
     }
 
+    function submitForm(values, actions) {
+        let submitUser = async () => {
+            let response = await axios.post('http://localhost:8000/user', values);
+
+            console.log(response);
+            if (response.status == 201) return response.data;
+            else return null;
+        }
+
+        let data = submitUser();
+
+        if (data == null) {
+            actions.isValidating(false);
+            actions.isSubmitting(false);
+            
+        }
+        else Router.push('/login');
+
+
+        
+    } 
+
     return (
         <div className="loginOverflow">
             <Formik
                 initialValues={{
-                    signupEmail: "",
-                    signupPassword: "",
+                    email: "",
+                    password: "",
+                    username: "",
+                    firstName: "",
+                    lastName: ""
                 }}
-                onSubmit={(values, actions) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2))
-                        actions.setSubmitting(false)
-                    }, 1000)
-                }}
+                onSubmit={(values, actions) => submitForm(values, actions)}
             >
             {(props) => (
                 <Form>
@@ -47,7 +69,7 @@ export default function signup() {
                             <img
                                 src="/loginImage.png" 
                                 alt="login image" 
-                                height="100%"
+                                height="100vh"
                                 width="100%"
                             />
                         </GridItem>
@@ -58,28 +80,59 @@ export default function signup() {
                                 alt="howartMunteseo image" 
                                 height="50px" 
                                 width="50px"/>
-                        </GridItem>
-                        <GridItem colSpan={5} rowSpan={1}>
                             <Text className="loginText loginMargin" align="center">SIGN UP</Text>
                         </GridItem>
                         <GridItem className="loginMargin" colSpan={5} rowSpan={1}>
-                        <Field name='signupEmail' validate={validateEmail}>
+                        <Field name='username' validate={validateField}>
                             {({ field, form }) => (
-                            <FormControl isInvalid={form.errors.signupEmail && form.touched.signupEmail}>
-                                <FormLabel htmlFor='signupEmail'>Email</FormLabel>
-                                <Input {...field} id='signupEmail' placeholder='Email' />
-                                <FormErrorMessage>{form.errors.signupEmail}</FormErrorMessage>
+                            <FormControl isInvalid={form.errors.username && form.touched.username}>
+                                <FormLabel htmlFor='username'>Username</FormLabel>
+                                <Input {...field} id='username' placeholder='Username' />
+                                <FormErrorMessage>{form.errors.username}</FormErrorMessage>
                             </FormControl>
                             )}
                         </Field>
                         </GridItem>
                         <GridItem className="loginMargin" colSpan={5} rowSpan={1}>
-                            <Field name='signupPassword' validate={validatePassword}>
+                            <Field name='email' validate={validateEmail}>
                                 {({ field, form }) => (
-                                <FormControl isInvalid={form.errors.signupPassword && form.touched.signupPassword}>
-                                    <FormLabel htmlFor='signupPassword'>Password</FormLabel>
-                                    <Input {...field} id='signupPassword' placeholder='Password' />
-                                    <FormErrorMessage>{form.errors.signupPassword}</FormErrorMessage>
+                                <FormControl isInvalid={form.errors.email && form.touched.email}>
+                                    <FormLabel htmlFor='email'>Email</FormLabel>
+                                    <Input {...field} id='email' placeholder='Email Address' />
+                                    <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                                </FormControl>
+                                )}
+                            </Field>
+                        </GridItem>
+                        <GridItem className="loginMargin" colSpan={5} rowSpan={1}>
+                            <Field name='password' validate={validateField}>
+                                {({ field, form }) => (
+                                <FormControl isInvalid={form.errors.password && form.touched.password}>
+                                    <FormLabel htmlFor='password'>Password</FormLabel>
+                                    <Input {...field} id='password' placeholder='Password' />
+                                    <FormErrorMessage>{form.errors.password}</FormErrorMessage>
+                                </FormControl>
+                                )}
+                            </Field>
+                        </GridItem>
+                        <GridItem className="loginMargin" colSpan={5} rowSpan={1}>
+                            <Field name='firstName' validate={validateField}>
+                                {({ field, form }) => (
+                                <FormControl isInvalid={form.errors.firstName && form.touched.firstName}>
+                                    <FormLabel htmlFor='firstName'>First Name</FormLabel>
+                                    <Input {...field} id='firstName' placeholder='First Name' />
+                                    <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
+                                </FormControl>
+                                )}
+                            </Field>
+                        </GridItem>
+                        <GridItem className="loginMargin" colSpan={5} rowSpan={1}>
+                            <Field name='lastName' validate={validateField}>
+                                {({ field, form }) => (
+                                <FormControl isInvalid={form.errors.lastName && form.touched.lastName}>
+                                    <FormLabel htmlFor='lastName'>Last Name</FormLabel>
+                                    <Input {...field} id='lastName' placeholder='Last Name' />
+                                    <FormErrorMessage>{form.errors.lastName}</FormErrorMessage>
                                 </FormControl>
                                 )}
                             </Field>

@@ -2,11 +2,11 @@ import Layout from '../components/layout'
 import React, { useState } from 'react'
 import {Avatar, Box, Button, Badge, Center,  Flex, Grid, GridItem, Heading, HStack, IconButton, Text,  VStack} from "@chakra-ui/react"
 import {CheckIcon, CheckCircleIcon, EmailIcon, ChevronDownIcon, SmallCloseIcon} from '@chakra-ui/icons'
-import Head from 'next/head'
 import LandingPagePosts from "../components/landingPagePosts.js";
 export default function Profile() {
    
     const [Followed, changeFollowed] = useState(false)
+
     const paintingCol1 = [
         {url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
           userPic: 'http://www.shenyunperformingarts.org/data/image/original/2021/05/29/63ea2c642aaee001d818604fe1d9a811.jpg', userName: '@LeonadroDaVinci'},
@@ -40,6 +40,7 @@ export default function Profile() {
 
 
     return (
+
         <div>
             <Box  w='100%' h='100%'  p={4} className="brownText" >
                 <Grid h="25vh" templateRows='repeat(3, 1fr)' templateColumns='repeat(7, 1fr)'>
@@ -107,6 +108,7 @@ export default function Profile() {
                 </Box>
             </Box>
         </div>
+
     )
   }
   
