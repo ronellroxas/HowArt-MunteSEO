@@ -1,5 +1,5 @@
 import { Box , HStack, Grid, GridItem, Spacer, Select, Text, VStack} from "@chakra-ui/react"
-import LandingPagePosts from "../components/landingPagePosts.js";
+import Posts from "./Posts.js";
 
 export default function LandingCollage(props) {
 
@@ -49,21 +49,21 @@ export default function LandingCollage(props) {
         <GridItem colSpan={1} margin="2.5">
             <VStack width="100%" spacing="2.5">
             {paintingCol1.map((painting1) => (
-                <LandingPagePosts key={painting1.url} url={painting1.url} userPic={painting1.userPic} userName={painting1.userName}/>
+                <Posts key={painting1.url} url={painting1.url} userPic={painting1.userPic} userName={painting1.userName}/>
             ))}
             </VStack>
         </GridItem>
         <GridItem colSpan={1} margin="2.5">
             <VStack width="100%" spacing="2.5">
             {paintingCol2.map((painting2) => (
-                <LandingPagePosts key={painting2.url} url={painting2.url} userPic={painting2.userPic} userName={painting2.userName}/>
+                <Posts key={painting2.url} url={painting2.url} userPic={painting2.userPic} userName={painting2.userName}/>
             ))}
             </VStack>
         </GridItem>
         <GridItem colSpan={1} margin="2.5">
             <VStack width="100%" spacing="2.5">
             {paintingCol3.map((painting3) => (
-                <LandingPagePosts key={painting3.url} url={painting3.url} userPic={painting3.userPic} userName={painting3.userName}/>
+                <Posts key={painting3.url} url={painting3.url} userPic={painting3.userPic} userName={painting3.userName}/>
             ))}
             </VStack>
         </GridItem>
