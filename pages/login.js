@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaLinkedinIn } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import { Formik, Field, Form } from 'formik';
+import Router from 'next/router';
 
 export default function login() {
 
@@ -31,7 +32,15 @@ export default function login() {
                 }}
                 onSubmit={(values, actions) => {
                     setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2))
+                        let data = JSON.parse(JSON.stringify(values, null, 2))
+                        console.log(data.loginEmail)
+                        console.log(data.loginPassword)
+                        if (data.loginEmail == "juandelacruz@gmail.com" && data.loginPassword == "password1234") {
+                            Router.push('/')
+                        }
+                        else {
+                            alert("Invalid email or password")
+                        }
                         actions.setSubmitting(false)
                     }, 1000)
                 }}
@@ -78,7 +87,7 @@ export default function login() {
                                 {({ field, form }) => (
                                 <FormControl isInvalid={form.errors.loginPassword && form.touched.loginPassword}>
                                     <FormLabel htmlFor='loginPassword'>Password</FormLabel>
-                                    <Input {...field} id='loginPassword' placeholder='Password' />
+                                    <Input {...field} type="password" id='loginPassword' placeholder='Password' />
                                     <FormErrorMessage>{form.errors.loginPassword}</FormErrorMessage>
                                 </FormControl>
                                 )}
