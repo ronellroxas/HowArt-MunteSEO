@@ -16,7 +16,8 @@ const orderSchema = new mongoose.Schema({
     contact_number: {
       type: String,
       required: false,
-      trim: true
+      trim: true,
+      default: "N/A"
     },
 
     contact_details: {
@@ -28,9 +29,9 @@ const orderSchema = new mongoose.Schema({
 
     title: {
         type: String,
-        required: [ true, "Please provide title" ],
         trim: true,
-        max: 200
+        max: 200,
+        default: "pending title"
     },
 
     date_created: {
@@ -45,8 +46,8 @@ const orderSchema = new mongoose.Schema({
 
     status: {
         type: String,
-        enum: ['Unpaid', 'Partially Paid', 'Fully Paid', 'Completed', 'Cancelled'],
-        default: 'Unpaid'
+        enum: ['Pending', 'Unpaid', 'Partially Paid', 'Fully Paid', 'Completed', 'Cancelled'],
+        default: 'Pending'
     },
 
     amount_paid: {
@@ -56,7 +57,7 @@ const orderSchema = new mongoose.Schema({
 
     price: {
         type: mongoose.Decimal128,
-        required: [ true, "Please provide a price" ]
+        default: 0
     },
 
     details: {

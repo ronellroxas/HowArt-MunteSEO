@@ -15,11 +15,14 @@ const upload = multer({
     }
 });
 
+//commission form page
+router.post("/create-order", authMiddlewares.checkAuth, upload.single("image"), orderController.createOrder);
+
 //my orders page
 router.get("/my-orders", authMiddlewares.checkAuth, orderController.myOrders);
 router.get("/order-details", orderController.orderDetails);
+router.post("/edit-order-contacts", orderController.editOrderContacts);
 router.post("/pay-order", orderController.payOrder);
-router.post("/create-order", authMiddlewares.checkAuth, upload.single("image"), orderController.createOrder);
 
 //my jobs page
 router.get("/my-jobs", authMiddlewares.checkAuth, orderConteroller.myJobs);

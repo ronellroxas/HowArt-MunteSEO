@@ -1,6 +1,30 @@
 const mongoose = require("mongoose");
 const Order = require("../models/order.model");
 
+/*COMMISSION FORM PAGE*/
+//create an order for an artist
+module.exports.createOrder = async (req, res, next) => {
+    try {
+        let order = new Order {
+            client: req.userId,
+            artist: req.body.artistId,
+            contact_number: req.body.contact_number,
+            contact_details: req.body.contact_details,
+            date_created: new Date(),
+            date_deadline: req.body.date_deadline,
+            details: req.body.details,
+            ref_image: req.file != undefined ? req.file.filename : undefined
+        });
+        await order.save();
+        await order.populate('client');
+        await order.populate('artist');
+
+        res.status(201).json(order.toPlainObjectWithUser());
+    } catch (e) {
+        next (e);
+    }
+}
+
 /*MY ORDERS PAGE (CLIENT SIDE)*/
 //display my orders page
 module.exports.myOrders = async (req, res, next) => {
@@ -69,26 +93,18 @@ module.exports.payOrder = async (req, res, next) => {
     }
 }
 
-//create an order for an artist
-module.exports.createOrder = async (req, res, next) => {
+//
+module.exports.editOrderContacts = async (req, res, next) => {
     try {
-        let order = new Order {
-            client: req.userId,
-            artist: req.body.artistId,
-            contact_number: req.body.contact_number,
-            contact_details: req.body.contact_details,
-            title: req.body.title,
-            date_created: req.body.date_created,
-            date_deadline: req.body.date_deadline,
-            price: req.body.price,
-            details: req.body.details,
-            ref_image: req.file != undefined ? req.file.filename : undefined
-        });
-        await order.save();
-        await order.populate('client');
-        await order.populate('artist');
+        let order = await Order.findById(req.body.orderId);
+        if (order == null) {
+            return res.status(404).end();
+        }
 
-        res.status(201).json(order.toPlainObjectWithUser());
+        order.contact_number = req.body.contact_number;
+        order.contact_details = req.body.contact_details;
+        await order.save()
+        res.status(204).end();
     } catch (e) {
         next (e);
     }
@@ -137,6 +153,7 @@ module.exports.editJobDetails = async (req, res, next) => {
 
         order.title = req.body.title
         order.date_deadline = req.body.date_deadline
+        order.price = req.body.price
         await order.save()
         res.status(204).end();
     } catch (e) {
@@ -144,7 +161,7 @@ module.exports.editJobDetails = async (req, res, next) => {
     }
 }
 
-//updaet job status to completed or cancelled
+//update job status to completed or cancelled
 module.exports.updateStatus = async (req, res, next) => {
     try {
         let order = await Order.findById(req.body.orderId);
@@ -152,7 +169,7 @@ module.exports.updateStatus = async (req, res, next) => {
             return res.status(404).end();
         }
 
-        order.status = req.body.status //either Completed or Cancelled
+        order.status = req.body.status //either Completed, Unpaid or Cancelled
         await order.save()
         res.status(204).end();
     } catch (e) {
