@@ -150,3 +150,7 @@ a {
 .addScrollbar {
     overflow: auto;
 }
+
+#header-logo {
+    cursor: pointer;
+}

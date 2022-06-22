@@ -3,6 +3,7 @@ import { Flex, Stack, Button, Text, IconButton, Modal, ModalOverlay, ModalHeader
 import { useDisclosure } from '@chakra-ui/react'
 import { FiShoppingCart } from 'react-icons/fi'
 import Image from 'next/image'
+import Router from 'next/router'
 
 export default function NavBar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -12,7 +13,7 @@ export default function NavBar() {
             <Box className="navbar" backgroundColor="#3F3F3F" w="100%" h="1vh" px={50} minH={50} align="center" justify="center" position="fixed" zIndex={50}>
                 <Flex w='100%' h='100%' justifyContent={'space-between'} alignItems={'center'}>
                     <Box>
-                        <Image src="/HowArt MUnteSEO.png" alt="Logo" width={250} height={30} />
+                        <Image id='header-logo' src="/HowArt MUnteSEO.png" alt="Logo" width={250} height={30} onClick={() => Router.push('/')}/>
                     </Box>
 
                     <Flex alignItems={'center'}>

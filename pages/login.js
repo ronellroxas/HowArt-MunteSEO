@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaLinkedinIn } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import { Formik, Field, Form } from 'formik';
+import Router from 'next/router';
 
 export default function login() {
 
@@ -103,7 +104,7 @@ export default function login() {
                         </GridItem>
                         <GridItem colSpan={5} rowSpan={1}>
                             <Center>
-                                <Button id="loginButton" isLoading={props.isSubmitting} type="submit" color="white" fontWeight="bold" bg="#CCA893" w="35%" size='sm'>
+                                <Button id="loginButton" isLoading={props.isSubmitting} type="submit" color="white" fontWeight="bold" bg="#CCA893" w="35%" size='sm' onClick={() => Router.push('/')}>
                                     Log in
                                 </Button>
                             </Center>
