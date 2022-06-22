@@ -32,7 +32,15 @@ export default function login() {
                 }}
                 onSubmit={(values, actions) => {
                     setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2))
+                        let data = JSON.parse(JSON.stringify(values, null, 2))
+                        console.log(data.loginEmail)
+                        console.log(data.loginPassword)
+                        if (data.loginEmail == "juandelacruz@gmail.com" && data.loginPassword == "password1234") {
+                            Router.push('/')
+                        }
+                        else {
+                            alert("Invalid email or password")
+                        }
                         actions.setSubmitting(false)
                     }, 1000)
                 }}
@@ -79,7 +87,7 @@ export default function login() {
                                 {({ field, form }) => (
                                 <FormControl isInvalid={form.errors.loginPassword && form.touched.loginPassword}>
                                     <FormLabel htmlFor='loginPassword'>Password</FormLabel>
-                                    <Input {...field} id='loginPassword' placeholder='Password' />
+                                    <Input {...field} type="password" id='loginPassword' placeholder='Password' />
                                     <FormErrorMessage>{form.errors.loginPassword}</FormErrorMessage>
                                 </FormControl>
                                 )}
@@ -104,7 +112,7 @@ export default function login() {
                         </GridItem>
                         <GridItem colSpan={5} rowSpan={1}>
                             <Center>
-                                <Button id="loginButton" isLoading={props.isSubmitting} type="submit" color="white" fontWeight="bold" bg="#CCA893" w="35%" size='sm' onClick={() => Router.push('/')}>
+                                <Button id="loginButton" isLoading={props.isSubmitting} type="submit" color="white" fontWeight="bold" bg="#CCA893" w="35%" size='sm'>
                                     Log in
                                 </Button>
                             </Center>

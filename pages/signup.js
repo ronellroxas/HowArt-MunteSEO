@@ -47,7 +47,7 @@ export default function signup() {
     } 
 
     return (
-        <div className="loginOverflow">
+        <div className="">
             <Formik
                 initialValues={{
                     email: "",
@@ -109,7 +109,7 @@ export default function signup() {
                                 {({ field, form }) => (
                                 <FormControl isInvalid={form.errors.password && form.touched.password}>
                                     <FormLabel htmlFor='password'>Password</FormLabel>
-                                    <Input {...field} id='password' placeholder='Password' />
+                                    <Input {...field} type="password" id='password' placeholder='Password' />
                                     <FormErrorMessage>{form.errors.password}</FormErrorMessage>
                                 </FormControl>
                                 )}

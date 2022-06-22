@@ -15,11 +15,11 @@ a {
 }
 
 .loginPadding {
-    padding-top: 130px;
+    padding-top: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 60%;
 }
 
 .loginMargin {
